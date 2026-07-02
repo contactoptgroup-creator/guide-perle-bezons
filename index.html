@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Perle de Bezons | Guide de Bienvenue</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #070810;
+            --bg-2: #0f1119;
+            --bg-3: #131623;
+            --card: #0f1119;
+            --card-2: #1a1d2e;
+            --text: #ffffff;
+            --text-muted: #8b8fa3;
+            --gold: #d4af37;
+            --gold-light: #f5d77a;
+            --blue: #2563eb;
+            --green: #22c55e;
+            --red: #ef4444;
+            --purple: #8b5cf6;
+            --orange: #f97316;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Background Effects */
+        .bg-noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            z-index: 0;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at 50% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 80%, rgba(37, 99, 235, 0.05) 0%, transparent 40%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, rgba(7, 8, 16, 0.95), transparent);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--gold);
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Slide Container */
+        .slides-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+        }
+
+        .slide-content {
+            max-width: 1200px;
+            width: 100%;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--bg)),
+                        url('Photos Pro/SuperMozaique La Perle de Bezons.jpg') center/cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .hero-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text) 0%, var(--gold-light) 50%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmerText 5s linear infinite;
+            background-size: 200% 200%;
+        }
+
+        @keyframes shimmerText {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-address {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-tagline {
+            font-size: 1.3rem;
+            color: var(--gold);
+            font-weight: 500;
+            margin-bottom: 3rem;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        .scroll-indicator svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            opacity: 0.5;
+        }
+
+        .card-glow {
+            box-shadow: 0 0 60px rgba(212, 175, 55, 0.1);
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+        }
+
+        /* Photo Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 200px);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item.large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        /* Stats */
+        .stat-card {
+            background: var(--card);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 14px;
+            background: conic-gradient(from 0deg, var(--gold), transparent, var(--gold));
+            z-index: -1;
+            animation: rotate 4s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes rotate {
+            to { transform: rotate(360deg); }
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Icon Boxes */
+        .icon-box {
+            width: 48px;
+            height: 48px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .icon-box svg {
+            width: 24px;
+            height: 24px;
+            color: var(--gold);
+        }
+
+        /* Amenities */
+        .amenity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .amenity-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: var(--card-2);
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .amenity-item .check {
+            color: var(--green);
+            font-weight: bold;
+        }
+
+        /* Contact Cards */
+        .contact-card {
+            background: var(--card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon.red { background: rgba(239, 68, 68, 0.15); color: var(--red); }
+        .contact-icon.blue { background: rgba(37, 99, 235, 0.15); color: var(--blue); }
+        .contact-icon.green { background: rgba(34, 197, 94, 0.15); color: var(--green); }
+        .contact-icon.gold { background: rgba(212, 175, 55, 0.15); color: var(--gold); }
+
+        .contact-info h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .contact-info a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        /* Check-in/out */
+        .checkin-box {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.02) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .checkin-time {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .checkin-label {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+        }
+
+        /* Rules */
+        .rule-card {
+            background: var(--card);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .rule-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .rule-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .rule-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Restaurant Cards */
+        .restaurant-card {
+            background: var(--card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .restaurant-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .restaurant-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .restaurant-address {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .restaurant-phone {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--blue);
+            margin-bottom: 0.75rem;
+        }
+
+        .restaurant-specialty {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .restaurant-specialty strong {
+            color: var(--gold);
+        }
+
+        .restaurant-highlights {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Places to Visit */
+        .place-card {
+            background: var(--card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .place-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .place-image {
+            height: 150px;
+            background: linear-gradient(135deg, var(--card-2), var(--bg));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .place-content {
+            padding: 1.5rem;
+        }
+
+        .place-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .place-distance {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(212, 175, 55, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+        }
+
+        .place-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Checklist */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+
+        .checklist .bullet {
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* Rating Section */
+        .rating-section {
+            text-align: center;
+        }
+
+        .stars {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .star {
+            font-size: 3rem;
+            color: var(--gold);
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .star:nth-child(2) { animation-delay: 0.1s; }
+        .star:nth-child(3) { animation-delay: 0.2s; }
+        .star:nth-child(4) { animation-delay: 0.3s; }
+        .star:nth-child(5) { animation-delay: 0.4s; }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Thank You */
+        .thank-you {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .thank-you h2 {
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2rem;
+        }
+
+        .signature {
+            font-style: italic;
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        /* WiFi Box */
+        .wifi-box {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(37, 99, 235, 0.02) 100%);
+            border: 1px solid rgba(37, 99, 235, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .wifi-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .wifi-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .wifi-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            color: var(--blue);
+            padding: 0.5rem 1rem;
+            background: var(--card);
+            border-radius: 8px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .slide {
+                padding: 5rem 1rem 3rem;
+            }
+
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+
+            .gallery-item.large {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+        }
+
+        /* Divider */
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+            margin: 2rem 0;
+        }
+
+        /* Text utilities */
+        .text-gold { color: var(--gold); }
+        .text-muted { color: var(--text-muted); }
+        .text-center { text-align: center; }
+        .mb-1 { margin-bottom: 0.5rem; }
+        .mb-2 { margin-bottom: 1rem; }
+        .mb-3 { margin-bottom: 1.5rem; }
+        .mb-4 { margin-bottom: 2rem; }
+        .mt-4 { margin-top: 2rem; }
+
+        /* Host photo placeholder */
+        .host-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Parking cards */
+        .parking-card {
+            background: var(--card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+        }
+
+        .parking-name {
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 0.25rem;
+        }
+
+        .parking-address {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+        }
+
+        .parking-info {
+            font-size: 0.8rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .parking-info span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .tag-free {
+            background: rgba(34, 197, 94, 0.15);
+            color: var(--green);
+            padding: 0.125rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .tag-paid {
+            background: rgba(249, 115, 22, 0.15);
+            color: var(--orange);
+            padding: 0.125rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-noise"></div>
+    <div class="bg-gradient"></div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="logo">OPTIMI GROUP</div>
+        <ul class="nav-links">
+            <li><a href="#bienvenue">Bienvenue</a></li>
+            <li><a href="#logement">Logement</a></li>
+            <li><a href="#equipements">Équipements</a></li>
+            <li><a href="#arrivee">Arrivée</a></li>
+            <li><a href="#proximite">À Proximité</a></li>
+            <li><a href="#visiter">À Visiter</a></li>
+        </ul>
+    </nav>
+
+    <div class="slides-container">
+
+        <!-- HERO -->
+        <section class="hero" id="hero">
+            <div class="hero-bg"></div>
+            <div class="hero-label">
+                <span>✨</span> Votre cocon en Île-de-France
+            </div>
+            <h1>La Perle de Bezons</h1>
+            <p class="hero-address">140 Avenue Gabriel Péri, 95870 Bezons</p>
+            <p class="hero-tagline">Guide de Bienvenue</p>
+            <div class="scroll-indicator">
+                <span>Défiler</span>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- BIENVENUE -->
+        <section class="slide" id="bienvenue">
+            <div class="slide-content">
+                <div class="section-header">
+                    <div class="section-number">01</div>
+                    <h2 class="section-title">Bienvenue</h2>
+                    <p class="section-subtitle">Bienvenue à Bezons et dans notre charmant appartement moderne !</p>
+                </div>
+
+                <div class="grid-2">
+                    <div class="card card-glow">
+                        <p class="mb-3">Nous sommes ravis de vous accueillir dans notre espace confortable et bien équipé, idéal pour un séjour agréable en Île-de-France. Nous avons travaillé dur pour créer un lieu moderne où vous pourrez vous détendre.</p>
+                        <p class="mb-3">Bezons est idéalement situé aux portes de Paris, avec un accès facile au tramway T2 et au RER. Vous pouvez facilement rejoindre <strong class="text-gold">La Défense en 15 minutes</strong> et <strong class="text-gold">Paris centre en 30 minutes</strong>. Profitez du calme de la banlieue tout en ayant Paris à portée de main !</p>
+                        <p>Après une journée bien remplie, vous pourrez vous détendre dans notre appartement équipé de tout le confort moderne : TV écran plat, Wi-Fi haut débit, machine Nespresso, cuisine équipée avec lave-vaisselle, machine à laver et sèche-linge.</p>
+                    </div>
+                    <div>
+                        <div class="grid-2" style="gap: 1rem;">
+                            <div class="stat-card">
+                                <div class="stat-value">15</div>
+                                <div class="stat-label">min vers La Défense</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value">30</div>
+                                <div class="stat-label">min vers Paris</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value">5</div>
+                                <div class="stat-label">min au Tramway T2</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value">200+</div>
+                                <div class="stat-label">appartements gérés</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VOTRE HÔTE -->
+        <section class="slide" id="hote">
+            <div class="slide-content">
+                <div class="section-header">
+                    <div class="section-number">02</div>
+                    <h2 class="section-title">Votre Hôte</h2>
+                </div>
+
+                <div class="card card-glow text-center" style="max-width: 800px; margin: 0 auto;">
+                    <div class="host-photo">👤</div>
+                    <h3 class="text-gold mb-2" style="font-size: 1.5rem;">Jean-Marc</h3>
+                    <p class="text-muted mb-3">Fondateur d'OPTIMI Group</p>
+                    <p class="mb-3">Bonjour et bienvenue dans notre appartement à Bezons ! Je suis Jean-Marc, votre hôte et fondateur d'OPTIMI Group, une conciergerie parisienne gérant plus de 200 appartements à Paris.</p>
+                    <p class="mb-3">Nous aimons rencontrer des gens du monde entier et partager nos conseils pour que vous puissiez vivre une expérience inoubliable.</p>
+                    <p class="mb-3">Notre équipe est à votre disposition <strong class="text-gold">7j/7</strong> pour répondre à toutes vos questions et vous aider à planifier votre séjour.</p>
+                    <p>Nous adorons les voyages, la gastronomie, la culture et l'histoire, et nous sommes heureux de partager nos connaissances avec vous.</p>
+                    <p class="signature mt-4">— Jean-Marc</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- LE LOGEMENT -->
+        <section class="slide" id="logement">
+            <div class="slide-content">
+                <div class="section-header">
+                    <div class="section-number">03</div>
+                    <h2 class="section-title">Le Logement</h2>
+                    <p class="section-subtitle">Bienvenue dans notre appartement moderne situé à Bezons, aux portes de Paris !</p>
+                </div>
+
+                <div class="gallery">
+                    <div class="gallery-item large">
+                        <img src="Photos Pro/LCD Opt group Péri Bezons-3.jpg" alt="Salon">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="Photos Pro/LCD Opt group Péri Bezons-2.jpg" alt="Chambre">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="Photos Pro/LCD Opt group Péri Bezons.jpg" alt="Balcon">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="Photos Pro/LCD Opt group Péri Bezons-5.jpg" alt="Cuisine">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="Photos Pro/LCD Opt group Péri Bezons-6.jpg" alt="Salle de bain">
+                    </div>
+                </div>
+
+                <div class="grid-3 mt-4">
+                    <div class="card">
+                        <div class="icon-box">🛋️</div>
+                        <h4 class="mb-2">Salon Lumineux</h4>
+                        <p class="text-muted">Espace de vie confortable avec canapé, TV 55" et accès au balcon meublé.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon-box">🍳</div>
+                        <h4 class="mb-2">Cuisine Équipée</h4>
+                        <p class="text-muted">Réfrigérateur, micro-ondes, four, lave-vaisselle, cafetière et bouilloire.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon-box">🛏️</div>
+                        <h4 class="mb-2">Chambre Confortable</h4>
+                        <p class="text-muted">Lit confortable avec linge de qualité et stores occultants.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ÉQUIPEMENTS -->
+        <section class="slide" id="equipements">
+            <div class="slide-content">
+                <div class="section-header">
+                    <div class="section-number">04</div>
+                    <h2 class="section-title">Équipements</h2>
+                    <p class="section-subtitle">Nous fournissons plusieurs équipements pendant votre séjour.</p>
+                </div>
+
+                <div class="grid-3">
+                    <div class="card">
+                        <h4 class="text-gold mb-3">🛁 Salle de bain</h4>
+                        <div class="amenity-grid" style="grid-template-columns: 1fr;">
+                            <div class="amenity-item"><span class="check">✓</span> Baignoire</div>
+                            <div class="amenity-item"><span class="check">✓</span> Sèche-cheveux</div>
+                            <div class="amenity-item"><span class="check">✓</span> Shampoing & Savon</div>
+                            <div class="amenity-item"><span class="check">✓</span> Gel douche</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h4 class="text-gold mb-3">🛏️ Chambre & Buanderie</h4>
+                        <div class="amenity-grid" style="grid-template-columns: 1fr;">
+                            <div class="amenity-item"><span class="check">✓</span> Lave-linge gratuit</div>
+                            <div class="amenity-item"><span class="check">✓</span> Sèche-linge gratuit</div>
+                            <div class="amenity-item"><span class="check">✓</span> Linge de lit</div>
+                            <div class="amenity-item"><span class="check">✓</span> Fer à repasser</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h4 class="text-gold mb-3">📺 Divertissement</h4>
+                        <div class="amenity-grid" style="grid-template-columns: 1fr;">
+                            <div class="amenity-item"><span class="check">✓</span> TV HD 55"</div>
+                            <div class="amenity-item"><span class="check">✓</span> Vélo d'appartement</div>
+                            <div class="amenity-item"><span class="check">✓</span> Tapis de yoga</div>
+                            <div class="amenity-item"><span class="check">✓</span> Jeux de société</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h4 class="text-gold mb-3">🍳 Cuisine</h4>
+                        <div class="amenity-grid" style="grid-template-columns: 1fr;">
+                            <div class="amenity-item"><span class="check">✓</span> Réfrigérateur Samsung</div>
+                            <div class="amenity-item"><span class="check">✓</span> Four Whirlpool</div>
+                            <div class="amenity-item"><span class="check">✓</span> Lave-vaisselle</div>
+                            <div class="amenity-item"><span class="check">✓</span> Cafetière & Bouilloire</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h4 class="text-gold mb-3">❄️ Climat</h4>
+                        <div class="amenity-grid" style="grid-template-columns: 1fr;">
+                            <div class="amenity-item"><span class="check">✓</span> Climatisation centrale</div>
+                            <div class="amenity-item"><span class="check">✓</span> Chauffage central</div>
+                            <div class="amenity-item"><span class="check">✓</span> Ventilateur de plafond</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h4 class="text-gold mb-3">🔒 Sécurité</h4>
+                        <div class="amenity-grid" style="grid-template-columns: 1fr;">
+                            <div class="amenity-item"><span class="check">✓</span> Détecteur de fumée</div>
+                            <div class="amenity-item"><span class="check">✓</span> Détecteur CO</div>
+                            <div class="amenity-item"><span class="check">✓</span> Extincteur</div>
+                            <div class="amenity-item"><span class="check">✓</span> Trousse premiers secours</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WIFI -->
+        <section class="slide" id="wifi">
+            <div class="slide-content">
+                <div class="section-header">
+                    <div class="section-number">05</div>
+                    <h2 class="section-title">Connexion Internet</h2>
+                </div>
+
+                <div class="wifi-box">
+                    <div class="wifi-icon">📶</div>
+                    <p class="wifi-label">Réseau WiFi</p>
+                    <div class="wifi-value">xxxxxxxxxxx</div>
+                    <p class="wifi-label">Mot de passe</p>
+                    <div class="wifi-value">xxxxxxxxxxxxxxxxxxx</div>
+                    <div class="divider"></div>
+                    <p class="text-muted">Wi-Fi rapide — <strong class="text-gold">53 Mbps</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACTS D'URGENCE -->
+        <section class="slide" id="urgence">
+            <div class="slide-content">
+                <div class="section-header">
+                    <div class="section-number">06</div>
+                    <h2 class="section-title">Contacts d'Urgence</h2>
+                </div>
+
+                <div class="grid-3">
+                    <div class="contact-card">
+                        <div class="contact-icon gold">👤</div>
+                        <div class="contact-info">
+                            <h4>Gestionnaire</h4>
+                            <p>Jean-Marc</p>
+                            <a href="tel:+33612784932">+33 6 12 78 49 32</a>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon red">🚒</div>
+                        <div class="contact-info">
+                            <h4>Pompiers</h4>
+                            <p>Caserne Bezons</p>
+                            <a href="tel:3430">3430</a>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon blue">👮</div>
+                        <div class="contact-info">
+                            <h4>Police</h4>
+                            <p>24 Ave Gabriel Péri, Bezons</p>
+                            <a href="tel:+33147275873">+33 1 47 27 58 73</a>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon green">🏥</div>
+                        <div class="contact-info">
+                            <h4>Hôpital</h4>
+                            <p>CHU Louis-Mourier Colombes</p>
+                            <p>178 Rue des Renouillers, 92700</p>
+                            <a href="tel:+33156092000">+33 1 56 09 20 00</a>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon green">💊</div>
+                        <div class="contact-info">
+                            <h4>Pharmacie</h4>
+                            <p>Pharmacie de l'Avenir</p>
+                            <p>104 Ave Gabriel Péri, 95870</p>
+                            <a href="tel:+33144683918">+33 1 44 68 39 18</a>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon blue">🚗</div>
+                        <div class="contact-info">
+                            <h4>Dépannage</h4>
+                            <p>DepanGo</p>
+                            <p>15 Bd Henri IV, 75004</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ARRIVÉE / DÉPART -->
+        <section class="slide" id="arrivee">
+            <div class="slide-content">
+                <div class="section-header">
+                    <div class="section-number">07</div>
+                    <h2 class="section-title">Arrivée / Départ</h2>
+                </div>
+
+                <div class="grid-2">
+                    <div class="checkin-box">
+                        <div class="checkin-time">15h00</div>
+                        <div class="checkin-label">Arrivée après</div>
+                        <div class="divider"></div>
+                        <ul class="checklist" style="text-align: left;">
+                            <li><span class="bullet">▸</span> Code immeuble: <strong class="text-gold">09A74</strong></li>
+                            <li><span class="bullet">▸</span> 4ème étage — ascenseur disponible</li>
+                            <li><span class="bullet">▸</span> Porte de droite n°344</li>
+                            <li><span class="bullet">▸</span> Clés dans la boîte à clés</li>
+                        </ul>
+                        <a href="https://bit.ly/CheckinBezons" class="text-gold" style="display: block; margin-top: 1rem;">📋 Procédure complète</a>
+                    </div>
+                    <div class="checkin-box" style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(239, 68, 68, 0.02) 100%); border-color: rgba(239, 68, 68, 0.2);">
+                        <div class="checkin-time" style="color: var(--red);">11h00</div>
+                        <div class="checkin-label">Départ avant</div>
+                        <div class="divider"></div>
+                        <ul class="checklist" style="text-align: left;">
+                            <li><span class="bullet">▸</span> Ranger vos affaires</li>
+                            <li><span class="bullet">▸</span> Jeter les déchets</li>
+                            <li><span class="bullet">▸</span> Faire la vaisselle</li>
+                            <li><span class="bullet">▸</span> Éteindre lumières et appareils</li>
+                            <li><span class="bullet">▸</span> Fermer fenêtres et portes</li>
+                            <li><span class="bullet">▸</span> Vérifier vos affaires</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RÈGLES DE LA MAISON -->
+        <section class="slide" id="regles">
+            <div class="slide-content">
+                <div class="section-header">
+                    <div class="section-number">08</div>
+                    <h2 class="section-title">Règles de la Maison</h2>
+                    <p class="section-subtitle">Voici quelques rappels pour profiter pleinement de votre séjour.</p>
+                </div>
+
+                <div class="grid-4">
+                    <div class="rule-card">
+                        <div class="rule-icon">🚭</div>
+                        <div class="rule-title">Non-fumeur</div>
+                        <p class="rule-desc">Strictement interdit à l'intérieur et extérieur</p>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-icon">🐾</div>
+                        <div class="rule-title">Pas d'animaux</div>
+                        <p class="rule-desc">Politique stricte pour tous nos voyageurs</p>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-icon">🎉</div>
+                        <div class="rule-title">Pas de fêtes</div>
+                        <p class="rule-desc">Nuisances après 22h = pénalités</p>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-icon">👥</div>
+                        <div class="rule-title">Voyageurs</div>
+                        <p class="rule-desc">Seuls les invités réservés sont autorisés</p>
+                    </div>
+                </div>
+
+                <div class="card mt-4" style="border-color: rgba(239, 68, 68, 0.2);">
+                    <p class="text-muted" style="font-size: 0.85rem;">
+                        ⚠️ Le logement est équipé d'un système de prévention (bruit/CO2) pour la sécurité des voyageurs.
+                        Tout objet cassé sera facturé à sa valeur de remplacement.
+                        Départ tardif sans préavis = heures supplémentaires facturées au double.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONSEILS SÉJOUR - PARKING -->
+        <section class="slide" id="proximite">
+            <div class="slide-content">
+                <div class="section-header">
+                    <div class="section-number">09</div>
+                    <h2 class="section-title">Conseils Séjour</h2>
+                    <p class="section-subtitle">Parking & Commodités à proximité</p>
+                </div>
+
+                <div class="grid-2">
+                    <div>
+                        <h3 class="text-gold mb-3">🚗 Parkings</h3>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div class="parking-card">
+                                <div class="parking-name">Parking Intermarché Bezons</div>
+                                <div class="parking-address">38-40 Rue Édouard Vaillant</div>
+                                <div class="parking-info">
+                                    <span>📍 5 min à pied</span>
+                                    <span class="tag-free">Gratuit clients</span>
+                                </div>
+                            </div>
+                            <div class="parking-card">
+                                <div class="parking-name">Parking Les 4 Chemins</div>
+                                <div class="parking-address">2 Place des Quatre Chemins</div>
+                                <div class="parking-info">
+                                    <span>📍 8 min à pied</span>
+                                    <span class="tag-free">2h gratuites</span>
+                                </div>
+                            </div>
+                            <div class="parking-card">
+                                <div class="parking-name">Parking Gare de Bezons (T2)</div>
+                                <div class="parking-address">Avenue Gabriel Péri</div>
+                                <div class="parking-info">
+                                    <span>📍 10 min à pied</span>
+                                    <span class="tag-paid">Payant</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-gold mb-3">🛒 Commerces</h3>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div class="parking-card">
+                                <div class="parking-name">Intermarché Bezons</div>
+                                <div class="parking-address">38-40 Rue Édouard Vaillant</div>
+                                <div class="parking-info">
+                                    <span>📍 5 min | 400m</span>
+                                    <span>Jusqu'à 20h</span>
+                                </div>
+                            </div>
+                            <div class="parking-card">
+                                <div class="parking-name">Franprix</div>
+                                <div class="parking-address">118 Avenue Gabriel Péri</div>
+                                <div class="parking-info">
+                                    <span>📍 5 min | 400m</span>
+                                    <span>Jusqu'à 22h</span>
+                                </div>
+                            </div>
+                            <div class="parking-card">
+                                <div class="parking-name">Boulangerie L'Aube</div>
+                                <div class="parking-address">107 Ave Gabriel Péri</div>
+                                <div class="parking-info">
+                                    <span>📍 2 min | 150m</span>
+                                    <span>Pain frais</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OÙ MANGER -->
+        <section class="slide" id="restaurants">
+            <div class="slide-content">
+                <div class="section-header">
+                    <div class="section-number">10</div>
+                    <h2 class="section-title">Où Manger</h2>
+                    <p class="section-subtitle">Les meilleurs restaurants de Bezons !</p>
+                </div>
+
+                <div class="grid-3">
+                    <div class="restaurant-card">
+                        <div class="restaurant-name">La Brasserie du Marché</div>
+                        <div class="restaurant-address">95 Avenue Gabriel Péri, 95870 Bezons</div>
+                        <div class="restaurant-phone">+33 1 39 61 12 34</div>
+                        <p class="restaurant-specialty"><strong>Spécialité:</strong> Cuisine française traditionnelle</p>
+                        <p class="restaurant-highlights">Plat du jour, steak frites, tarte maison. Ambiance conviviale. À 300m.</p>
+                    </div>
+                    <div class="restaurant-card">
+                        <div class="restaurant-name">Le Ventre Saint Gris</div>
+                        <div class="restaurant-address">24 Rue Anatole France, 95870 Bezons</div>
+                        <div class="restaurant-phone">+33 1 39 61 81 19</div>
+                        <p class="restaurant-specialty"><strong>Spécialité:</strong> Bistronomie française</p>
+                        <p class="restaurant-highlights">Cuisine maison avec produits frais de saison. Note 9,7/10. À 700m.</p>
+                    </div>
+                    <div class="restaurant-card">
+                        <div class="restaurant-name">Gigi Pizza</div>
+                        <div class="restaurant-address">88 Avenue Gabriel Péri, 95870 Bezons</div>
+                        <div class="restaurant-phone">+33 1 39 61 45 67</div>
+                        <p class="restaurant-specialty"><strong>Spécialité:</strong> Pizzas artisanales</p>
+                        <p class="restaurant-highlights">Margherita, calzone, tiramisu. Livraison disponible. À 250m.</p>
+                    </div>
+                    <div class="restaurant-card">
+                        <div class="restaurant-name">Pizza Nova</div>
+                        <div class="restaurant-address">78 Rue Édouard Vaillant, 95870 Bezons</div>
+                        <div class="restaurant-phone">+33 1 39 61 78 90</div>
+                        <p class="restaurant-specialty"><strong>Spécialité:</strong> Pizzas et pâtes italiennes</p>
+                        <p class="restaurant-highlights">Pizza 4 fromages, lasagnes. Ambiance familiale. À 350m.</p>
+                    </div>
+                    <div class="restaurant-card">
+                        <div class="restaurant-name">Kayani's</div>
+                        <div class="restaurant-address">45 Avenue Gabriel Péri, 95870 Bezons</div>
+                        <div class="restaurant-phone">+33 1 39 80 12 56</div>
+                        <p class="restaurant-specialty"><strong>Spécialité:</strong> Cuisine orientale et grillades</p>
+                        <p class="restaurant-highlights">Kebab, shawarma, assiettes mixtes. Qualité et saveurs. À 200m.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LIEUX À VISITER -->
+        <section class="slide" id="visiter">
+            <div class="slide-content">
+                <div class="section-header">
+                    <div class="section-number">11</div>
+                    <h2 class="section-title">Lieux à Visiter</h2>
+                    <p class="section-subtitle">Découvrez Paris comme un local !</p>
+                </div>
+
+                <div class="grid-3">
+                    <div class="place-card">
+                        <div class="place-image">🏛️</div>
+                        <div class="place-content">
+                            <div class="place-name">Musée du Louvre</div>
+                            <div class="place-distance">⏱️ 45 min | 3.5 km</div>
+                            <p class="place-desc">Le plus grand musée du monde. Abrite la Joconde et des milliers d'œuvres d'art historiques.</p>
+                        </div>
+                    </div>
+                    <div class="place-card">
+                        <div class="place-image">🗼</div>
+                        <div class="place-content">
+                            <div class="place-name">Tour Eiffel</div>
+                            <div class="place-distance">⏱️ 10 min | 800 m</div>
+                            <p class="place-desc">Tour en fer forgé de 324m, symbole le plus célèbre de Paris. Achetez vos billets en ligne !</p>
+                        </div>
+                    </div>
+                    <div class="place-card">
+                        <div class="place-image">🛍️</div>
+                        <div class="place-content">
+                            <div class="place-name">Champs-Élysées</div>
+                            <div class="place-distance">⏱️ 18 min | 1.5 km</div>
+                            <p class="place-desc">La plus belle avenue du monde. Shopping, restaurants et monuments majestueux.</p>
+                        </div>
+                    </div>
+                    <div class="place-card">
+                        <div class="place-image">⛪</div>
+                        <div class="place-content">
+                            <div class="place-name">Notre-Dame de Paris</div>
+                            <div class="place-distance">⏱️ 55 min | 4.5 km</div>
+                            <p class="place-desc">Chef-d'œuvre de l'architecture gothique, monument le plus visité de France.</p>
+                        </div>
+                    </div>
+                    <div class="place-card">
+                        <div class="place-image">🏛️</div>
+                        <div class="place-content">
+                            <div class="place-name">Le Panthéon</div>
+                            <div class="place-distance">⏱️ 60 min | 5 km</div>
+                            <p class="place-desc">Temple des Grands Hommes. Dernière demeure de Victor Hugo, Voltaire, Marie Curie...</p>
+                        </div>
+                    </div>
+                    <div class="place-card">
+                        <div class="place-image">📚</div>
+                        <div class="place-content">
+                            <div class="place-name">Quartier Latin</div>
+                            <div class="place-distance">⏱️ 60 min | 5 km</div>
+                            <p class="place-desc">L'un des plus anciens quartiers de Paris. Atmosphère animée, musées et jardins splendides.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ÉVALUATION -->
+        <section class="slide" id="evaluation">
+            <div class="slide-content">
+                <div class="section-header">
+                    <div class="section-number">12</div>
+                    <h2 class="section-title">Évaluation</h2>
+                    <p class="section-subtitle">Merci de laisser un avis 5 étoiles si vous avez apprécié votre séjour !</p>
+                </div>
+
+                <div class="rating-section">
+                    <div class="stars">
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                    </div>
+                    <p class="text-muted mb-4">Votre retour nous aide énormément !</p>
+                    <div class="card" style="max-width: 600px; margin: 0 auto;">
+                        <p class="mb-2"><strong class="text-gold">⭐⭐⭐⭐⭐</strong> — La perfection n'existe pas, mais on s'en approche !</p>
+                        <p class="mb-2"><strong>⭐⭐⭐⭐</strong> — Plusieurs points à améliorer</p>
+                        <p class="mb-2"><strong>⭐⭐⭐</strong> — Plusieurs problèmes à régler</p>
+                        <p class="text-muted" style="font-size: 0.85rem;">Contactez-nous avant de laisser un avis négatif — nous voulons arranger les choses !</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MERCI -->
+        <section class="slide" id="merci">
+            <div class="slide-content thank-you">
+                <h2>Merci !</h2>
+                <div class="card" style="max-width: 700px; margin: 0 auto;">
+                    <p class="mb-3">Cher voyageur,</p>
+                    <p class="mb-3">Je tenais à vous remercier chaleureusement d'avoir choisi notre appartement pour votre séjour à Paris. J'espère que vous avez passé un excellent moment dans notre belle ville.</p>
+                    <p class="mb-3">Si vous avez des commentaires ou suggestions pour améliorer l'expérience des futurs voyageurs, n'hésitez pas à nous le faire savoir.</p>
+                    <p class="mb-3">Merci encore pour votre confiance et j'espère avoir le plaisir de vous accueillir à nouveau lors de votre prochain séjour à Paris.</p>
+                    <p class="signature">Cordialement, — Jean-Marc</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>© 2024 <a href="https://optimigroup.fr">OPTIMI Group</a> — La Perle de Bezons</p>
+        <p style="margin-top: 0.5rem;">140 Avenue Gabriel Péri, 95870 Bezons</p>
+    </footer>
+
+    <script>
+        // Smooth reveal on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.slide-content').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Active nav link
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.color = link.getAttribute('href') === `#${current}`
+                    ? 'var(--gold)'
+                    : 'var(--text-muted)';
+            });
+        });
+    </script>
+</body>
+</html>
