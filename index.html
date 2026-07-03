@@ -571,12 +571,36 @@
         }
 
         .place-image {
-            height: 150px;
+            height: 180px;
             background: linear-gradient(135deg, var(--card-2), var(--bg));
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 3rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .place-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .place-card:hover .place-image img {
+            transform: scale(1.1);
+        }
+
+        .place-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(to top, var(--card), transparent);
+            pointer-events: none;
         }
 
         .place-content {
@@ -2825,7 +2849,9 @@
 
                 <div class="grid-3">
                     <div class="place-card">
-                        <div class="place-image">🏢</div>
+                        <div class="place-image">
+                            <img src="https://images.unsplash.com/photo-1524396309943-e03f5249f002?w=400&h=250&fit=crop&q=80" alt="La Défense - Grande Arche" loading="lazy">
+                        </div>
                         <div class="place-content">
                             <div class="place-name">La Défense</div>
                             <div class="place-distance">⏱️ 12 min | 4 km (Tram T2 direct)</div>
@@ -2833,7 +2859,9 @@
                         </div>
                     </div>
                     <div class="place-card">
-                        <div class="place-image">🗼</div>
+                        <div class="place-image">
+                            <img src="https://images.unsplash.com/photo-1511739001486-6bfe10ce65f4?w=400&h=250&fit=crop&q=80" alt="Tour Eiffel" loading="lazy">
+                        </div>
                         <div class="place-content">
                             <div class="place-name">Tour Eiffel</div>
                             <div class="place-distance">⏱️ 40 min | 12 km (T2 + Métro 6)</div>
@@ -2841,7 +2869,9 @@
                         </div>
                     </div>
                     <div class="place-card">
-                        <div class="place-image">🛍️</div>
+                        <div class="place-image">
+                            <img src="https://images.unsplash.com/photo-1509439581779-6298f75bf6e5?w=400&h=250&fit=crop&q=80" alt="Arc de Triomphe - Champs-Élysées" loading="lazy">
+                        </div>
                         <div class="place-content">
                             <div class="place-name">Champs-Élysées</div>
                             <div class="place-distance">⏱️ 35 min | 11 km (T2 + Métro 1)</div>
@@ -2849,7 +2879,9 @@
                         </div>
                     </div>
                     <div class="place-card">
-                        <div class="place-image">🏛️</div>
+                        <div class="place-image">
+                            <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=400&h=250&fit=crop&q=80" alt="Musée du Louvre" loading="lazy">
+                        </div>
                         <div class="place-content">
                             <div class="place-name">Musée du Louvre</div>
                             <div class="place-distance">⏱️ 45 min | 14 km (T2 + Métro 1)</div>
@@ -2857,7 +2889,9 @@
                         </div>
                     </div>
                     <div class="place-card">
-                        <div class="place-image">⛪</div>
+                        <div class="place-image">
+                            <img src="https://images.unsplash.com/photo-1478391679764-b2d8b3cd1e94?w=400&h=250&fit=crop&q=80" alt="Notre-Dame de Paris" loading="lazy">
+                        </div>
                         <div class="place-content">
                             <div class="place-name">Notre-Dame de Paris</div>
                             <div class="place-distance">⏱️ 55 min | 16 km (T2 + RER A)</div>
@@ -2865,7 +2899,9 @@
                         </div>
                     </div>
                     <div class="place-card">
-                        <div class="place-image">🎭</div>
+                        <div class="place-image">
+                            <img src="https://images.unsplash.com/photo-1550340499-a6c60fc8287c?w=400&h=250&fit=crop&q=80" alt="Sacré-Cœur Montmartre" loading="lazy">
+                        </div>
                         <div class="place-content">
                             <div class="place-name">Montmartre & Sacré-Cœur</div>
                             <div class="place-distance">⏱️ 45 min | 13 km (T2 + Métro 4)</div>
