@@ -2978,21 +2978,20 @@
             // 3. SECTION HEADERS — Reveal Animation
             // ═══════════════════════════════════════════════════════════
             gsap.utils.toArray('.section-header').forEach(header => {
-                gsap.fromTo(header,
-                    { y: 60, opacity: 0, visibility: 'hidden' },
-                    {
-                        y: 0,
-                        opacity: 1,
-                        visibility: 'visible',
-                        duration: 1,
-                        ease: 'power3.out',
-                        scrollTrigger: {
-                            trigger: header,
-                            start: 'top 85%',
-                            toggleActions: 'play none none reverse'
-                        }
+                // Assurer visibilité immédiate puis animer
+                header.style.visibility = 'visible';
+                header.style.opacity = '1';
+                gsap.from(header, {
+                    y: 60,
+                    opacity: 0,
+                    duration: 1,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: header,
+                        start: 'top 90%',
+                        toggleActions: 'play none none none'
                     }
-                );
+                });
             });
 
             // ═══════════════════════════════════════════════════════════
@@ -3007,26 +3006,30 @@
 
             gridSelectors.forEach(selector => {
                 gsap.utils.toArray(selector).forEach(grid => {
+                    // Assurer visibilité immédiate
+                    grid.style.visibility = 'visible';
+                    grid.style.opacity = '1';
+
                     // Reveal the grid container
-                    gsap.fromTo(grid,
-                        { y: 40, opacity: 0, visibility: 'hidden' },
-                        {
-                            y: 0,
-                            opacity: 1,
-                            visibility: 'visible',
-                            duration: 0.8,
-                            ease: 'power2.out',
-                            scrollTrigger: {
-                                trigger: grid,
-                                start: 'top 80%',
-                                toggleActions: 'play none none reverse'
-                            }
+                    gsap.from(grid, {
+                        y: 40,
+                        opacity: 0,
+                        duration: 0.8,
+                        ease: 'power2.out',
+                        scrollTrigger: {
+                            trigger: grid,
+                            start: 'top 90%',
+                            toggleActions: 'play none none none'
                         }
-                    );
+                    });
 
                     // Stagger children (cards)
                     const children = grid.children;
                     if (children.length > 0) {
+                        Array.from(children).forEach(child => {
+                            child.style.visibility = 'visible';
+                            child.style.opacity = '1';
+                        });
                         gsap.from(children, {
                             y: 30,
                             opacity: 0,
@@ -3035,8 +3038,8 @@
                             ease: 'power2.out',
                             scrollTrigger: {
                                 trigger: grid,
-                                start: 'top 75%',
-                                toggleActions: 'play none none reverse'
+                                start: 'top 85%',
+                                toggleActions: 'play none none none'
                             }
                         });
                     }
@@ -3047,63 +3050,57 @@
             // 5. STANDALONE CARDS — Reveal Animation
             // ═══════════════════════════════════════════════════════════
             gsap.utils.toArray('.slide-content > .card').forEach(card => {
-                gsap.fromTo(card,
-                    { y: 50, opacity: 0, visibility: 'hidden' },
-                    {
-                        y: 0,
-                        opacity: 1,
-                        visibility: 'visible',
-                        duration: 0.8,
-                        ease: 'power2.out',
-                        scrollTrigger: {
-                            trigger: card,
-                            start: 'top 80%',
-                            toggleActions: 'play none none reverse'
-                        }
+                card.style.visibility = 'visible';
+                card.style.opacity = '1';
+                gsap.from(card, {
+                    y: 50,
+                    opacity: 0,
+                    duration: 0.8,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: card,
+                        start: 'top 90%',
+                        toggleActions: 'play none none none'
                     }
-                );
+                });
             });
 
             // ═══════════════════════════════════════════════════════════
             // 6. WIFI BOX — Special Reveal
             // ═══════════════════════════════════════════════════════════
             gsap.utils.toArray('.wifi-box').forEach(box => {
-                gsap.fromTo(box,
-                    { scale: 0.9, opacity: 0, visibility: 'hidden' },
-                    {
-                        scale: 1,
-                        opacity: 1,
-                        visibility: 'visible',
-                        duration: 0.8,
-                        ease: 'back.out(1.7)',
-                        scrollTrigger: {
-                            trigger: box,
-                            start: 'top 80%',
-                            toggleActions: 'play none none reverse'
-                        }
+                box.style.visibility = 'visible';
+                box.style.opacity = '1';
+                gsap.from(box, {
+                    scale: 0.9,
+                    opacity: 0,
+                    duration: 0.8,
+                    ease: 'back.out(1.7)',
+                    scrollTrigger: {
+                        trigger: box,
+                        start: 'top 90%',
+                        toggleActions: 'play none none none'
                     }
-                );
+                });
             });
 
             // ═══════════════════════════════════════════════════════════
             // 7. RATING SECTION — Stars Animation
             // ═══════════════════════════════════════════════════════════
             gsap.utils.toArray('.rating-section').forEach(rating => {
-                gsap.fromTo(rating,
-                    { y: 40, opacity: 0, visibility: 'hidden' },
-                    {
-                        y: 0,
-                        opacity: 1,
-                        visibility: 'visible',
-                        duration: 0.8,
-                        ease: 'power2.out',
-                        scrollTrigger: {
-                            trigger: rating,
-                            start: 'top 80%',
-                            toggleActions: 'play none none reverse'
-                        }
+                rating.style.visibility = 'visible';
+                rating.style.opacity = '1';
+                gsap.from(rating, {
+                    y: 40,
+                    opacity: 0,
+                    duration: 0.8,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: rating,
+                        start: 'top 90%',
+                        toggleActions: 'play none none none'
                     }
-                );
+                });
 
                 // Stars stagger
                 const stars = rating.querySelectorAll('.star');
